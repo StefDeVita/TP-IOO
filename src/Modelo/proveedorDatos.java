@@ -1,6 +1,7 @@
 package Modelo;
 
 import DTO.proveedorDTO;
+import DTO.productoDTO;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,8 @@ public class proveedorDatos {
         this.certificadoNR = s;
     }
 
-    public proveedorDTO toDTO(){
-        proveedorDTO dto = new proveedorDTO(this.getCuit(), this.getRS(), this.getNombre(), this.getCNR(), this.getProductos());
+    public proveedorDTO toDTO() throws Exception {
+        proveedorDTO dto = new proveedorDTO(this.getCuit(), this.getRS(), this.getNombre(), this.getCNR(), productoDTO.listToDTO(this.getProductos()));
         return dto;
     }
 

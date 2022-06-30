@@ -160,13 +160,7 @@ public class productos_servicios_controller {
         }
         return dtoList;
     }
-    public static ArrayList<productoDatos> listToModel(ArrayList<productoDTO> lista) throws Exception {
-        ArrayList<productoDatos> ModelList = new ArrayList<>();
-        for (productoDTO p : lista) {
-            ModelList.add(productoDTO.toModel(p));
-        }
-        return ModelList;
-    }
+
     public int cantRubros(){
         return listadoRubros.size();
     }

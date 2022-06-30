@@ -42,20 +42,20 @@ public class frmAltaProveedor extends JDialog {
                     cnr = true;
                 else
                     cnr = false;
-                ArrayList<productoDTO> nu = null;
+                ArrayList<productoDTO> listaProducto = null;
                 try {
-                    nu = productos();
+                    listaProducto = productos();
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
-                proveedorDTO a = null;
+                proveedorDTO prov = null;
                 try {
-                    a = new proveedorDTO(valueOf(textField1.getText()), textField2.getText(), textField3.getText(), cnr, productosServiciosController.listToModel(nu));
+                    prov = new proveedorDTO(valueOf(textField1.getText()), textField3.getText(), textField2.getText(), cnr, listaProducto);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
                 try {
-                    controllerProveedor.agregarProveedor(a);
+                    controllerProveedor.agregarProveedor(prov);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -66,9 +66,9 @@ public class frmAltaProveedor extends JDialog {
     public ArrayList<productoDTO> productos() throws Exception {
         ArrayList<productoDTO> lista = new ArrayList<>();
         int j = 1;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Random sn = new Random();
-            if(sn.nextInt(0, 3) != 0) {
+            if(sn.nextInt(0, 2) != 0) {
                 // Se genera el precio aleatoriamente
                 Random r = new Random();
                 int precio = valueOf(r.nextInt(10, 500));

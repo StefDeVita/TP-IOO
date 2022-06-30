@@ -45,7 +45,12 @@ public class frmInternaS2 extends JInternalFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 int s = table1.getSelectedRow();
-                frmAsociarRubro frame = new frmAsociarRubro(s,productosServiciosController);
+                frmAsociarRubro frame = null;
+                try {
+                    frame = new frmAsociarRubro(s,productosServiciosController);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
                 frame.setVisible(true);
             }
         });

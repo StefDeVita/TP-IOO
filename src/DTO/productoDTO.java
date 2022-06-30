@@ -48,5 +48,21 @@ public class productoDTO {
         return new productoDTO(modelo.getPrecioXuni(), modelo.getTipoIva(), modelo.getTipoUnidad(), modelo.getCodigo(), modelo.getRubroAsociado());
     }
 
+    public static ArrayList<productoDatos> listToModel(ArrayList<productoDTO> lista) throws Exception {
+        ArrayList<productoDatos> ModelList = new ArrayList<>();
+        for (productoDTO p : lista) {
+            ModelList.add(productoDTO.toModel(p));
+        }
+        return ModelList;
+    }
+
+    public static ArrayList<productoDTO> listToDTO(ArrayList<productoDatos> lista) throws Exception {
+        ArrayList<productoDTO> ModelList = new ArrayList<>();
+        for (productoDatos p : lista) {
+            ModelList.add(toDTO(p));
+        }
+        return ModelList;
+    }
+
 
 }

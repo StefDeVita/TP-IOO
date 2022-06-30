@@ -1,7 +1,8 @@
 package DTO;
 
-import Modelo.productoDatos;
+
 import Modelo.proveedorDatos;
+import DTO.productoDTO;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,9 @@ public class proveedorDTO {
     private String razonSocial;
     private String nombreProveedor;
     private boolean certificadoNR;
-    private ArrayList<productoDatos> productos;
+    private ArrayList<productoDTO> productos;
 
-    public proveedorDTO(int cuit, String razonSocial, String nombreProveedor, boolean certificadoNR, ArrayList<productoDatos> productos) {
+    public proveedorDTO(int cuit, String razonSocial, String nombreProveedor, boolean certificadoNR, ArrayList<productoDTO> productos) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.nombreProveedor = nombreProveedor;
@@ -38,7 +39,7 @@ public class proveedorDTO {
         return this.certificadoNR;
     }
 
-    public ArrayList<productoDatos> getProductos() throws Exception {
+    public ArrayList<productoDTO> getProductos() throws Exception {
         return productos;
     }
 
@@ -60,10 +61,10 @@ public class proveedorDTO {
     }
 
     public static proveedorDatos toModel(proveedorDTO dto) throws Exception {
-        return new proveedorDatos(dto.getCuit(), dto.getRS(), dto.getNombre(), dto.getCNR(), dto.getProductos());
+        return new proveedorDatos(dto.getCuit(), dto.getRS(), dto.getNombre(), dto.getCNR(), productoDTO.listToModel(dto.getProductos()));
     }
-    public static proveedorDTO toDto(proveedorDatos p) {
-        return new proveedorDTO(p.getCuit(), p.getRS(), p.getNombre(), p.getCNR(), p.getProductos());
+    public static proveedorDTO toDto(proveedorDatos p) throws Exception {
+        return new proveedorDTO(p.getCuit(), p.getRS(), p.getNombre(), p.getCNR(), productoDTO.listToDTO(p.getProductos()));
     }
 
 }

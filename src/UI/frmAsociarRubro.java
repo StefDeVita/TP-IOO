@@ -14,11 +14,12 @@ public class frmAsociarRubro extends JDialog{
     private JTextField textField1;
     private proveedorController controllerProveedor;
 
-    public frmAsociarRubro(int indiceRubro, productos_servicios_controller c) {
+    public frmAsociarRubro(int indiceRubro, productos_servicios_controller c) throws Exception {
         this.setContentPane(this.pnlPrincipalAsociarRubro);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(500, 500);
         this.setLocationRelativeTo(null);
+        controllerProveedor = proveedorController.getInstances();
         asociarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

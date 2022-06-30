@@ -78,7 +78,6 @@ public class frmCargarDocs extends JDialog{
                         break;
                     default:
                         tipo_de_doc = tipoDocumento.remito;
-                        break;
                 }
 
                 // Se asigna inicio de actividades a una variable tipo Date

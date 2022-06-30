@@ -34,7 +34,7 @@ public class proveedorController {
         return  new File(simpleName+".json").getPath();
     }
 
-    public proveedorDTO getProveedor(int cuit){
+    public proveedorDTO getProveedor(int cuit) throws Exception {
         for(proveedorDatos p: listadoProveedores){
             if(p.getCuit() == cuit)
                 return p.toDTO();
@@ -59,7 +59,7 @@ public class proveedorController {
 
     public ArrayList<productoDTO> getProductosxCuit(int cuit) throws Exception {
         ArrayList<productoDTO> array = new ArrayList<>();
-        getByCuitProveedor(cuit).getProductos().forEach(producto -> array.add(producto.toDTO()));
+        getByCuitProveedor(cuit).getProductos().forEach(producto -> array.add(producto));
         return array;
     }
 
@@ -101,7 +101,7 @@ public class proveedorController {
 
     public int precioxProv(int cuit, int codigo) throws Exception {
         proveedorDTO prov = getByCuitProveedor(cuit);
-        ArrayList<productoDTO> a = controllerPS.listaDTO(prov.getProductos());
+        ArrayList<productoDTO> a = prov.getProductos();
         AtomicInteger b = new AtomicInteger(-1);
         a.forEach(producto -> {
 
@@ -124,7 +124,7 @@ public class proveedorController {
         }
     }
 
-    public ArrayList<proveedorDTO> listarTodo(){
+    public ArrayList<proveedorDTO> listarTodo() throws Exception {
         ArrayList<proveedorDTO> listado = new ArrayList<proveedorDTO>();
         for(proveedorDatos p: listadoProveedores){
             listado.add(p.toDTO());
